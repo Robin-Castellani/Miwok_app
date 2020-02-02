@@ -18,7 +18,6 @@
         <activity
             android:name=".NumbersActivity"
             android:label="@string/category_numbers">
-<!--            android:label="@string/category_numbers"-->
 <!--            android:parentActivityName=".MainActivity">-->
 
 <!--            &lt;!&ndash; Parent activity meta-data to support 4.0 and lower &ndash;&gt;-->
@@ -27,8 +26,8 @@
 <!--                android:value=".MainActivity" />-->
         </activity>
         <activity
-            android:name=".FamilyActivity">
-<!--            android:label="@string/category_family"-->
+            android:name=".FamilyActivity"
+            android:label="@string/category_family">
 <!--            android:parentActivityName=".MainActivity">-->
 
 <!--            &lt;!&ndash; Parent activity meta-data to support 4.0 and lower &ndash;&gt;-->
@@ -37,8 +36,8 @@
 <!--                android:value=".MainActivity" />-->
         </activity>
         <activity
-            android:name=".ColorsActivity">
-<!--            android:label="@string/category_colors"-->
+            android:name=".ColorsActivity"
+            android:label="@string/category_colors">
 <!--            android:parentActivityName=".MainActivity">-->
 
 <!--            &lt;!&ndash; Parent activity meta-data to support 4.0 and lower &ndash;&gt;-->
@@ -47,8 +46,8 @@
 <!--                android:value=".MainActivity" />-->
         </activity>
         <activity
-            android:name=".PhrasesActivity">
-<!--            android:label="@string/category_phrases"-->
+            android:name=".PhrasesActivity"
+            android:label="@string/category_phrases">
 <!--            android:parentActivityName=".MainActivity">-->
 
 <!--            &lt;!&ndash; Parent activity meta-data to support 4.0 and lower &ndash;&gt;-->
