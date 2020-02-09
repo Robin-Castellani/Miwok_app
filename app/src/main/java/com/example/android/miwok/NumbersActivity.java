@@ -18,7 +18,9 @@ package com.example.android.miwok;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -42,19 +44,19 @@ public class NumbersActivity extends AppCompatActivity {
         words.add("nine");
         words.add("ten");
 
-        // get the activity_numbers LinearLayout finding it by its id
-        // (LinearLayout) casts the result (View) to a LinearLayout data type
-        LinearLayout rootView = (LinearLayout)findViewById(R.id.rootView);
+        // create an ArrayAdapter, useful to handle data in a RecyclerView
+        // it puts every element of words into an Android standard View, the
+        //  simple_list_item_1
+        // the ArrayAdapter is a concrete implementation of the ListAdapter interface
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_list_item_1, words
+        );
 
-        // programmatically add a new TextView with words content
-        for (int index = 0; index < words.size(); index++) {
-            // create TextView passing the context (this)
-            TextView wordView = new TextView(this);
-            // set TextView's text using the words ArrayList
-            wordView.setText(words.get(index));
-            // add the TextView to the parent view
-            rootView.addView(wordView);
-        }
+        // get the id of the ListView
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        // attach the ArrayAdapter to the ListView
+        listView.setAdapter(itemsAdapter);
 
     }
 }
