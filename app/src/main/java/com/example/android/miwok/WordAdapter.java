@@ -1,0 +1,62 @@
+package com.example.android.miwok;
+
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+public class WordAdapter extends ArrayAdapter<Word> {
+
+    /**
+     * Constructor of the WordAdapter
+     * @param context activity's context
+     * @param wordList ArrayList containing elements of Word type (Miwok and Default translation)
+     */
+    public WordAdapter(Activity context, ArrayList<Word> wordList) {
+        super(context, 0, wordList);
+    }
+
+    /**
+     * Get the view to be displayed at a specific position into the parent View
+     * @param position position of the list on the ArrayAdapter to display
+     * @param convertView View which will be populated with the items of the ArrayAdapter at a position
+     * @param parent parent View which will be populated by the ArrayAdapter with convertViews
+     * @return the populated convertView
+     */
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+        // get the View which will be multiplied to contain all items of the ArrayList
+        // a single View will contain a single item of the ArrayAdapter
+        View listItemView = convertView;
+        // check whether there is a convertView among the recycled Views
+        // if not, get it and inflate it into its parent View
+        if (listItemView == null) {
+            listItemView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.list_item, parent, false);
+        }
+
+        // get the Miwok - Default translation pair position on the ArrayAdapter
+        Word currentWord = this.getItem(position);
+
+        // now populate the itemListView with its elements from the Word object
+        // first the Miwok translation
+        TextView miwokTextView = listItemView.findViewById(R.id.miwok_text_view);
+        miwokTextView.setText(currentWord.getMiwokTranslation());
+
+        // then the Dafault translation
+        TextView defaultTextView = listItemView.findViewById(R.id.default_text_view);
+        defaultTextView.setText(currentWord.getDefaultTranslation());
+
+        // eventually return the list item View populated with translation from the ArrayList
+        // at the current position
+        return listItemView;
+    }
+}

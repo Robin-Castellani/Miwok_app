@@ -32,31 +32,31 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        ArrayList<String> words = new ArrayList<String>();
-        words.add("one");
-        words.add("two");
-        words.add("three");
-        words.add("four");
-        words.add("five");
-        words.add("six");
-        words.add("seven");
-        words.add("eight");
-        words.add("nine");
-        words.add("ten");
+        ArrayList<Word> words = new ArrayList<Word>();
+        words.add(new Word("lutti", "one"));
+        words.add(new Word("otiiko", "two"));
+        words.add(new Word("tolookosu", "three"));
+        words.add(new Word("oyyisa", "four"));
+        words.add(new Word("massokka", "five"));
+        words.add(new Word("temmokka", "six"));
+        words.add(new Word("kenekaku", "seven"));
+        words.add(new Word("kawinta", "eight"));
+        words.add(new Word("wo'e", "nine"));
+        words.add(new Word("na'aacha", "ten"));
 
         // create an ArrayAdapter, useful to handle data in a RecyclerView
         // it puts every element of words into an Android standard View, the
         //  simple_list_item_1
         // the ArrayAdapter is a concrete implementation of the ListAdapter interface
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, words
+        WordAdapter adapter = new WordAdapter(
+                this, words
         );
 
         // get the id of the ListView
         ListView listView = (ListView) findViewById(R.id.list);
 
         // attach the ArrayAdapter to the ListView
-        listView.setAdapter(itemsAdapter);
+        listView.setAdapter(adapter);
 
     }
 }
