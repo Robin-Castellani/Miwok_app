@@ -5,10 +5,10 @@ This app has been forked during the Udacity course in Android Basics.
 The app displays a lists of vocabulary words of the Miwok language and their English translations.
 
 The words are divided into four categories:
-- Numbers
-- Family members
-- Colors
-- Phrases
+- 🔢 Numbers
+- 👨‍👩‍👧‍👦 Family members
+- 🔴🟢 Colors
+- 🗣 Phrases
 
 ## Pre-requisites
 
