@@ -1,33 +1,28 @@
-Miwok App
-===================================
+# Miwok App
 
-This app displays lists of vocabulary words for the user to learn the Miwok language.
-Used in a Udacity course in the Beginning Android Nanodegree.
+This app has been forked during the Udacity course in Android Basics.
 
-Pre-requisites
---------------
+The app displays a lists of vocabulary words of the Miwok language and their English translations.
 
-- Android SDK v23
-- Android Build Tools v23.0.2
-- Android Support Repository v23.3.0
+The words are divided into four categories:
+- Numbers
+- Family members
+- Colors
+- Phrases
 
-Getting Started
----------------
+## Pre-requisites
+
+- Android SDK v26
+- Minimum Android SDK v16
+- Android Build Tools v28.0.3
+- Android Support Repository v26.1.0
+
+## Getting Started
 
 This sample uses the Gradle build system. To build this project, use the
 "gradlew build" command or use "Import Project" in Android Studio.
 
-Support
--------
-
-- Google+ Community: https://plus.google.com/communities/105153134372062985968
-- Stack Overflow: http://stackoverflow.com/questions/tagged/android
-
-Patches are encouraged, and may be submitted by forking this project and
-submitting a pull request through GitHub. Please see CONTRIBUTING.md for more details.
-
-License
--------
+## License
 
 Copyright 2016 The Android Open Source Project, Inc.
 
@@ -42,6 +37,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
