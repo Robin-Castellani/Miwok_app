@@ -14,7 +14,9 @@ import java.util.ArrayList;
 public class WordAdapter extends ArrayAdapter<Word> {
 
     /**
-     * Constructor of the WordAdapter
+     * Constructor of the WordAdapter; it uses one of the constructors of the super class
+     * (ArrayAdapter) but passes 0 as second parameter as we want to choose which View to
+     * use to display the Word objects
      * @param context activity's context
      * @param wordList ArrayList containing elements of Word type (Miwok and Default translation)
      */

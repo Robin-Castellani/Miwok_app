@@ -17,12 +17,40 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ColorsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_colors);
+        setContentView(R.layout.word_list);
+
+        ArrayList<Word> words = new ArrayList<Word>();
+        words.add(new Word("weṭeṭṭi", "red"));
+        words.add(new Word("chokokki", "green"));
+        words.add(new Word("ṭakaakki", "brown"));
+        words.add(new Word("ṭopoppi", "gray"));
+        words.add(new Word("kululli", "black"));
+        words.add(new Word("kelelli", "white"));
+        words.add(new Word("ṭopiisә", "dusty yellow"));
+        words.add(new Word("chiwiiṭә", "mustard yellow"));
+
+        // create an ArrayAdapter, useful to handle data in a RecyclerView
+        // it puts every element of words into an Android standard View, the
+        //  simple_list_item_1
+        // the ArrayAdapter is a concrete implementation of the ListAdapter interface
+        WordAdapter adapter = new WordAdapter(
+                this, words
+        );
+
+        // get the id of the ListView
+        ListView listView = (ListView) findViewById(R.id.word_list);
+
+        // attach the ArrayAdapter to the ListView
+        listView.setAdapter(adapter);
+
     }
 }
