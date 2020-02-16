@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -56,6 +57,10 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // then the Dafault translation
         TextView defaultTextView = listItemView.findViewById(R.id.default_text_view);
         defaultTextView.setText(currentWord.getDefaultTranslation());
+
+        // finally with the image
+        ImageView imgImageView = listItemView.findViewById(R.id.image_view);
+        imgImageView.setImageResource(currentWord.getImageResourceID());
 
         // eventually return the list item View populated with translation from the ArrayList
         // at the current position

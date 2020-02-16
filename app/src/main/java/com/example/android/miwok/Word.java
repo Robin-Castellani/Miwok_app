@@ -22,6 +22,18 @@ public class Word {
     }
 
     /**
+     * Public constructor to set Miwok and Default translation and image resource ID
+     * @param miwokTranslation word in Miwok language
+     * @param defaultTranslation word in user default language
+     * @param imageResourceID Integer of the image resource ID associated with the translation
+     */
+    public Word(String miwokTranslation, String defaultTranslation, Integer imageResourceID) {
+        mMiwokTranslation = miwokTranslation;
+        mDefaultTranslation = defaultTranslation;
+        mImageResourceID = imageResourceID;
+    }
+
+    /**
      * Get the Miwok word
      * @return Miwok word as a string
      */
