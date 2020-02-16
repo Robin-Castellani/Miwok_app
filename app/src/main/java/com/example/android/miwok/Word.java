@@ -2,13 +2,14 @@ package com.example.android.miwok;
 
 /**
  * The {@link Word} contains the Miwok word and the translated word in
- * another language 8set as default)
+ * another language (set as default)
  */
 public class Word {
 
-    /* Private Miwok and Default translation words*/
+    /* Private Miwok and Default translation words and image resource ID associated*/
     private String mMiwokTranslation;
     private String mDefaultTranslation;
+    private Integer mImageResourceID;
 
     /**
      * Public constructor to set Miwok and Default translation words
@@ -34,5 +35,13 @@ public class Word {
      */
     public String getDefaultTranslation() {
         return mDefaultTranslation;
+    }
+
+    /**
+     * Get the resource ID of the image associated with a translation
+     * @return Integer with the target image resource ID
+     */
+    public Integer getImageResourceID() {
+        return mImageResourceID;
     }
 }
