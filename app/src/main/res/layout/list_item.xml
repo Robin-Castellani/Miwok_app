@@ -15,24 +15,30 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher"
         android:padding="@dimen/activity_vertical_margin"
+        android:background="@color/tan_background"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/activity_vertical_margin"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center_vertical"
         >
 
         <TextView
             android:id="@+id/miwok_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="test1" />
+            tools:text="test1"
+            style="@style/MiwokTranslationStyle"
+            />
 
         <TextView
             android:id="@+id/default_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="test2" />
+            tools:text="test2"
+            style="@style/DefaultTranslationStyle"
+            />
     </LinearLayout>
 </LinearLayout>

@@ -14,15 +14,19 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
+    private Integer mColorResourceID;
+
     /**
      * Constructor of the WordAdapter; it uses one of the constructors of the super class
      * (ArrayAdapter) but passes 0 as second parameter as we want to choose which View to
      * use to display the Word objects
      * @param context activity's context
      * @param wordList ArrayList containing elements of Word type (Miwok and Default translation)
+     * @param colorResourceID color resource ID to be set as background color
      */
-    public WordAdapter(Activity context, ArrayList<Word> wordList) {
+    public WordAdapter(Activity context, ArrayList<Word> wordList, Integer colorResourceID) {
         super(context, 0, wordList);
+        mColorResourceID = colorResourceID;
     }
 
     /**
@@ -66,6 +70,8 @@ public class WordAdapter extends ArrayAdapter<Word> {
         } else {
             imgImageView.setImageResource(currentWord.getImageResourceID());
         }
+
+        listItemView.setBackgroundResource(mColorResourceID);
 
         // eventually return the list item View populated with translation from the ArrayList
         // at the current position

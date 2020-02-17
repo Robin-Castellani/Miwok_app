@@ -43,7 +43,7 @@ public class ColorsActivity extends AppCompatActivity {
         //  simple_list_item_1
         // the ArrayAdapter is a concrete implementation of the ListAdapter interface
         WordAdapter adapter = new WordAdapter(
-                this, words
+                this, words, R.color.category_colors
         );
 
         // get the id of the ListView
@@ -51,6 +51,5 @@ public class ColorsActivity extends AppCompatActivity {
 
         // attach the ArrayAdapter to the ListView
         listView.setAdapter(adapter);
-
     }
 }
