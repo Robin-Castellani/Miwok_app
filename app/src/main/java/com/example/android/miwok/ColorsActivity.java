@@ -17,7 +17,11 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -51,5 +55,23 @@ public class ColorsActivity extends AppCompatActivity {
 
         // attach the ArrayAdapter to the ListView
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Log.println(Log.INFO, "ITEMCLICK", "item clicked");
+                        Toast.makeText(getApplicationContext(), "Click performed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+
+//        AdapterView.OnItemClickListener playMiwokClickListener = new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(getApplicationContext(), "Click performed", Toast.LENGTH_SHORT).show();
+//            }
+//        };
+//        listView.setOnItemClickListener(playMiwokClickListener);
     }
 }
