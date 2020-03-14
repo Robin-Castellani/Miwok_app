@@ -58,17 +58,23 @@ public class WordAdapter extends ArrayAdapter<Word> {
         TextView miwokTextView = listItemView.findViewById(R.id.miwok_text_view);
         miwokTextView.setText(currentWord.getMiwokTranslation());
 
-        // then the Dafault translation
+        // then the Default translation
         TextView defaultTextView = listItemView.findViewById(R.id.default_text_view);
         defaultTextView.setText(currentWord.getDefaultTranslation());
 
-        // finally with the image, only if it is present in the currentWord instance
+        // show with the image, only if it is present in the currentWord instance
         // otherwise put away the ImageView
         ImageView imgImageView = listItemView.findViewById(R.id.image_view);
         if (currentWord.getImageResourceID() == null) {
             imgImageView.setVisibility(View.GONE);
         } else {
             imgImageView.setImageResource(currentWord.getImageResourceID());
+        }
+
+        // hide the play button if no audio resource ID is present
+        ImageView playButton = listItemView.findViewById(R.id.play_image_view);
+        if (currentWord.getPronunciationResourceID() == null) {
+            playButton.setVisibility(View.GONE);
         }
 
         listItemView.setBackgroundResource(mColorResourceID);
