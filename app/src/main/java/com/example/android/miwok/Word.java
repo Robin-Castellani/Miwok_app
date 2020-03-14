@@ -10,6 +10,7 @@ public class Word {
     private String mMiwokTranslation;
     private String mDefaultTranslation;
     private Integer mImageResourceID;
+    private Integer mPronunciationResourceID;
 
     /**
      * Public constructor to set Miwok and Default translation words
@@ -34,6 +35,24 @@ public class Word {
     }
 
     /**
+     * Public constructor to set Miwok and Default translation and image resource ID
+     * @param miwokTranslation word in Miwok language
+     * @param defaultTranslation word in user default language
+     * @param imageResourceID Integer of the image resource ID associated with the translation
+     * @param pronunciationResourceID Integer of the pronunciation audio resource ID
+     */
+    public Word(
+            String miwokTranslation,
+            String defaultTranslation,
+            Integer imageResourceID,
+            Integer pronunciationResourceID) {
+        mMiwokTranslation = miwokTranslation;
+        mDefaultTranslation = defaultTranslation;
+        mImageResourceID = imageResourceID;
+        mPronunciationResourceID = pronunciationResourceID;
+    }
+
+    /**
      * Get the Miwok word
      * @return Miwok word as a string
      */
@@ -55,5 +74,13 @@ public class Word {
      */
     public Integer getImageResourceID() {
         return mImageResourceID;
+    }
+
+    /**
+     * Get the resource ID of the audio pronunciation associated with a translation
+     * @return Integer with the target audio pronunciation resource ID
+     */
+    public Integer getPronunciationResourceID() {
+        return mPronunciationResourceID;
     }
 }
