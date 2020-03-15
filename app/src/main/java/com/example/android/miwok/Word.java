@@ -83,4 +83,14 @@ public class Word {
     public Integer getPronunciationResourceID() {
         return mPronunciationResourceID;
     }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mDefaultTranslation='" + mDefaultTranslation + '\'' +
+                ", mImageResourceID=" + mImageResourceID +
+                ", mPronunciationResourceID=" + mPronunciationResourceID +
+                '}';
+    }
 }

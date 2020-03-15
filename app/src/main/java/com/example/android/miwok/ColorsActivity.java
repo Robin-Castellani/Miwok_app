@@ -66,6 +66,9 @@ public class ColorsActivity extends AppCompatActivity {
                         Word currentWord = (Word) listView.getItemAtPosition(position);
                         Integer audioID = currentWord.getPronunciationResourceID();
 
+                        // verbose log the word played
+                        Log.v("ColorsActivity", "Current word" + currentWord);
+
                         // if no audio, display a Toast and exit
                         if (audioID == null) {
                             Toast.makeText(
