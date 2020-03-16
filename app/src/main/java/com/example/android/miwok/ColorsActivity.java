@@ -104,6 +104,13 @@ public class ColorsActivity extends AppCompatActivity {
         );
     }
 
+    @Override
+    protected void onStop() {
+        // Release audio resources when the app enters the Pause mode (app not visible anymore)
+        releaseMediaPlayer();
+        super.onStop();
+    }
+
     /**
      * Clean up the media player by releasing its resources.
      */
