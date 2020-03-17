@@ -15,6 +15,7 @@
  */
 package com.example.android.miwok;
 
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,10 +31,36 @@ public class ColorsActivity extends AppCompatActivity {
 
     private MediaPlayer pronunciationAudio;
 
+    private AudioManager audioManager;
+
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mp) {
             releaseMediaPlayer();
+        }
+    };
+
+    /**
+     * Listener for the audio focus request
+     */
+    AudioManager.OnAudioFocusChangeListener audioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+        @Override
+        public void onAudioFocusChange(int focusChange) {
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                // another app has taken the audio focus; audio must stop
+                releaseMediaPlayer();
+            } else if (
+                    focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                            focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK
+            ) {
+                // as each word counts, when audio focus is temporary loosen the audio pauses and
+                // goes back to the beginning
+                pronunciationAudio.pause();
+                pronunciationAudio.seekTo(0);
+            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                // audio focus is back and audio is resumed
+                pronunciationAudio.start();
+            }
         }
     };
 
@@ -66,6 +93,14 @@ public class ColorsActivity extends AppCompatActivity {
         // attach the ArrayAdapter to the ListView
         listView.setAdapter(adapter);
 
+        // get the audio system service and request the audio focus (deprecated call)
+        audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+        final Integer requestResult = audioManager.requestAudioFocus(
+                audioFocusChangeListener,
+                AudioManager.STREAM_MUSIC,
+                AudioManager.AUDIOFOCUS_GAIN
+        );
+
         // set the behaviour when a list item is clicked
         listView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
@@ -88,17 +123,22 @@ public class ColorsActivity extends AppCompatActivity {
                             return;
                         }
 
-                        // before playing any audio, release other possibly playing MediaPlayers
-                        releaseMediaPlayer();
+                        // check the result of the audio focus request and proceed if audio focus is gained
+                        if (requestResult == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                            // the audio focus is gained and audio can be played
+                            
+                            // before playing any audio, release other possibly playing MediaPlayers
+                            releaseMediaPlayer();
 
-                        // instantiate the MediaPlayer object and play the pronunciation
-                        pronunciationAudio = MediaPlayer.create(
-                                getApplicationContext(), audioID
-                        );
-                        pronunciationAudio.start();
+                            // instantiate the MediaPlayer object and play the pronunciation
+                            pronunciationAudio = MediaPlayer.create(
+                                    getApplicationContext(), audioID
+                            );
+                            pronunciationAudio.start();
 
-                        // release resources when the audio has finished playing
-                        pronunciationAudio.setOnCompletionListener(mCompletionListener);
+                            // release resources when the audio has finished playing
+                            pronunciationAudio.setOnCompletionListener(mCompletionListener);
+                        }
                     }
                 }
         );
@@ -125,6 +165,9 @@ public class ColorsActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             pronunciationAudio = null;
+
+            // abandon the audio focus at the end of the pronunciation playing
+            audioManager.abandonAudioFocus(audioFocusChangeListener);
         }
     }
 }
