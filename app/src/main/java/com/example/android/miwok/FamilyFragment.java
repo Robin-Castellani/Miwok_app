@@ -149,10 +149,10 @@ public class FamilyFragment extends Fragment {
     }
 
     @Override
-    public void onStop() {
+    public void onPause() {
         // Release audio resources when the app enters the Pause mode (app not visible anymore)
         releaseMediaPlayer();
-        super.onStop();
+        super.onPause();
     }
 
     /**
