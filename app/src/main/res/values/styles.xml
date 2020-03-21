@@ -49,4 +49,13 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
+
+    <!-- Style for the tabs -->
+    <style name="CategoryTab">
+        <item name="tabMode">fixed</item>
+        <item name="tabBackground">@color/primary_color</item>
+        <item name="tabTextColor">@color/unselected_text</item>
+        <item name="tabSelectedTextColor">@color/selected_text</item>
+        <item name="tabIndicatorColor">@color/selected_text</item>
+    </style>
 </resources>
