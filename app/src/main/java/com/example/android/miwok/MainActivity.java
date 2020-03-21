@@ -16,6 +16,7 @@
 package com.example.android.miwok;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -36,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
         // set the adapter to be used by the viewPager
         viewPager.setAdapter(adapter);
+
+        // attach the ViewPager to the tab layout
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
+        String[] fragmentNames = {"Numbers", "Family", "Colors", "Phrases"};
+
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            tabLayout.getTabAt(i).setText(fragmentNames[i]);
+        }
     }
 
 }
